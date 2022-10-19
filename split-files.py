@@ -9,7 +9,7 @@ file_patt = list()
 case_id = list()
 
 # get pattern
-with open('/Volumes/MI_BUFFALO/Elements-copy/projects/trombone-mIF/scratch/trombone-count-by-slice.txt', 'r') as f:
+with open('/path/to/file/count-by-slice.txt', 'r') as f:
     for line in f:
         line = line.split('\t')
         file_patt.append(line[0])
@@ -34,7 +34,7 @@ new_folder_name = list()
 # create qupath project folder
 for i, j in zip(case_id, slice_id_lst):
     new_name = i.split('\n')[0] + '_' + j
-    folder_name = '/Volumes/ritd-ag-project-rd00mr-misma09/trombone_mif/qupath-projects/' + new_name
+    folder_name = '/path/to/qupath-projects/' + new_name
     new_folder_name.append(folder_name)
     Path(folder_name).mkdir(parents=True, exist_ok=True)
 
@@ -42,9 +42,9 @@ for i, j in zip(case_id, slice_id_lst):
 # for each slice == project
 for i, j in zip(file_patt, new_folder_name):
     new_name = j.split('/')[5]
-    filepath = '/Volumes/ritd-ag-project-rd00mr-misma09/trombone_mif/component_data_tif/' + i + '*'
+    filepath = '/path/to/component_data/' + i + '*'
     filenamelst = glob.glob(filepath)
-    with open('/Volumes/MI_BUFFALO/Elements-copy/projects/trombone-mIF/path-to-files-by-slice/' + new_name + '-tiflst.txt', 'w') as f:
+    with open('/path/to/path-to-files-by-slice/' + new_name + '-tiflst.txt', 'w') as f:
         f.write('\n'.join(filenamelst))
 
     
