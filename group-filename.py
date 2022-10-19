@@ -8,14 +8,14 @@ from collections import Counter
 
 file_names = list()
 
-with open('/Volumes/MI_BUFFALO/Elements-copy/projects/trombone-mIF/scratch/trombone-component_data-namelst.txt', 'r') as f:
+with open('/path/to/file/component_data-namelst.txt', 'r') as f:
     for line in f:
         line = line.split('_[')
         file_names.append(line[0])
 
 count_by_slice = Counter(file_names)
 
-outfile = open('/Volumes/MI_BUFFALO/Elements-copy/projects/trombone-mIF/scratch/trombone-count-by-slice.txt', 'w')
+outfile = open('/path/to/file/count-by-slice.txt', 'w')
 
 for k, v in count_by_slice.items():
     string = "%s\t%s\n" % (k, v)
