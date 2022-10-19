@@ -1,0 +1,26 @@
+#!/usr/bin/python3
+
+# reads in a list of component_data filenames
+# extract the unique prefix and count
+# effectively counting number of tifs per slice
+
+from collections import Counter
+
+file_names = list()
+
+with open('/Volumes/MI_BUFFALO/Elements-copy/projects/trombone-mIF/scratch/trombone-component_data-namelst.txt', 'r') as f:
+    for line in f:
+        line = line.split('_[')
+        file_names.append(line[0])
+
+count_by_slice = Counter(file_names)
+
+outfile = open('/Volumes/MI_BUFFALO/Elements-copy/projects/trombone-mIF/scratch/trombone-count-by-slice.txt', 'w')
+
+for k, v in count_by_slice.items():
+    string = "%s\t%s\n" % (k, v)
+    outfile.write(string)
+
+outfile.close()
+
+
