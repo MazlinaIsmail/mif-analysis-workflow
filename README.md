@@ -18,4 +18,9 @@ Walk through of the steps taken for analysis of multiplex IF image data from Vec
   \# here I know we have n = 60  
   for i in {1..60}; do /Applications/QuPath.app/Contents/MacOS/QuPath script /path/to/groovy/script/create-project-and-load-images.groovy -a "$empty_dir[$i] $path_lst[$i]"; done  
 
+5. For each project, get mean intensity value of DAPI -> get-mean-intensity-value.groovy
+
+  \# first create a text file containing paths to qpproj files
+  for i in $(cat /path/to/qpproj-path.txt); do echo "["$(date)"]" $i; /Applications/QuPath.app/Contents/MacOS/QuPath script /path/to/groovy/script/get-mean-intensity-value.groovy -p $i; done
+
 To be continued .....  
